@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/focal64"
   config.vm.hostname = "bte-gatherer-vm"
-  config.vm.network :public_network, bridge: ''
+  config.vm.network "public_network"
   config.vm.network "forwarded_port", guest: 80, host: 80
   config.vm.network "forwarded_port", guest: 1905, host: 1905
   config.vm.network "forwarded_port", guest: 1915, host: 1915
@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 27017, host: 27017 
 
-  config.vm.synced_folder "../tickets-pro-prototype", "./home/vagrant/shared/tickets-pro-prototype"
+  config.vm.synced_folder "../tickets-pro-prototype", "/home/vagrant/shared/tickets-pro-prototype/"
 
   config.vm.provider :virtualbox do |vb|
-    vb.name = "bte-gatherer-vm"
+    vb.name = "enve-tickets-pro"
     vb.memory = 4096
     vb.cpus = 2
   end
